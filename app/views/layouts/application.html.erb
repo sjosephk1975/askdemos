@@ -2,7 +2,6 @@
 <html>
   <head>
     <title><%= Rails.application.class.module_parent.name %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,20 +10,7 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-  <% if signed_in? %>
-    <%= link_to current_user.email, edit_user_registration_path %>
-    <%= button_to "Log out", 
-              destroy_user_session_path, 
-              method: :delete, 
-              data: { turbo: "false" } %>
-  <% else %>
-    <%= link_to "Log in", new_user_session_path %>
-    <%= link_to "Register", new_user_registration_path %>
-  <% end %>
-
+    <%= render 'shared/flash' %>
     <%= render 'shared/navigation' %>
     <%= yield %>    
     <%= render 'shared/footer' %>
