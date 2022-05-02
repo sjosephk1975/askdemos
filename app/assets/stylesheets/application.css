@@ -33,3 +33,23 @@ body {
   border-radius: 6px;
   padding: 6px;
 }
+
+a:link { text-decoration: none; }
+a { text-decoration: none; }
+
+.scaffold_record {
+  border: 2px solid #BFBFBF;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+#error_explanation {
+  color:red;
+  border: 2px solid red;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
