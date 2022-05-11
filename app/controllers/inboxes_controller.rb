@@ -69,5 +69,4 @@ class InboxesController < ApplicationController
   def inbox_params
     params.require(:inbox).permit(:name)
   end
-
 end

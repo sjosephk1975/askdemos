@@ -1,32 +1,34 @@
-class Inboxes::MessagesController < ApplicationController
-  before_action :set_inbox
+module Inboxes
+  class MessagesController < ApplicationController
+    before_action :set_inbox
 
-  def new
-    @message = @inbox.messages.new
-  end
-
-  def create
-    @message = @inbox.messages.new(message_params)
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @inbox, notice: "Message was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-       end
+    def new
+      @message = @inbox.messages.new
     end
-  end
 
-  def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
-    respond_to do |format|
-      format.html { redirect_to @inbox, notice: "Message was successfully destroyed." }
-      format.json { head :no_content }
+    def create
+      @message = @inbox.messages.new(message_params)
+
+      respond_to do |format|
+        if @message.save
+          format.html { redirect_to @inbox, notice: 'Message was successfully created.' }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+        end
+      end
     end
-  end
 
-  private
+    def destroy
+      @message = Message.find(params[:id])
+      @message.destroy
+      respond_to do |format|
+        format.html { redirect_to @inbox, notice: 'Message was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
+
+    private
+
     def set_inbox
       @inbox = Inbox.find(params[:inbox_id])
     end
@@ -34,4 +36,5 @@ class Inboxes::MessagesController < ApplicationController
     def message_params
       params.require(:message).permit(:body).merge(user: current_user)
     end
+  end
 end
