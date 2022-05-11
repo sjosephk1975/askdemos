@@ -1,4 +1,5 @@
-<div id="<%= dom_id message %>">
+<div id="<%= dom_id message %>" class="scaffold_record">
+  <%= message.id %>
   <p>
     <strong>Body:</strong>
     <%= simple_format(message.body) %>
@@ -14,4 +15,5 @@
     <%= message.user.email %>
   </p>
 
+  <%= button_to "Destroy message", inbox_message_path([@inbox, message]), method: :delete %>
 </div>
