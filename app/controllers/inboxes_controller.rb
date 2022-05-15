@@ -16,7 +16,8 @@ class InboxesController < ApplicationController
   end
 
   # GET /inboxes/1/edit
-  def edit; end
+  def edit; 
+  end
 
   # POST /inboxes or /inboxes.json
   def create
