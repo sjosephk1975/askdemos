@@ -3,7 +3,11 @@
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, 
+                            autocomplete: 'off',
+                            style: 'width:100%; padding: 5px 10px;',
+                            rows: 10,
+                            maxlength: Message::MAX_BODY %>
   </div>
 
   <div>

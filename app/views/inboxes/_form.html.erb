@@ -13,7 +13,10 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, 
+                        autocomplete: 'off',
+                        style: 'width:100%;',
+                        maxlength: Inbox::MAX_NAME %>
   </div>
 
   <div>
