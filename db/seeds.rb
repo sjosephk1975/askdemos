@@ -20,12 +20,12 @@ p "#{Inbox.count} inboxes present after delete_all"
 p "#{Message.count} messages present after delete_all"
 
 2.times do
-  faker_email = Faker::Internet.email
+  faker_email = Faker::Internet.unique.email
   user = User.create(email: faker_email, 
               password: Devise.friendly_token[0, 20])
 
     rand(1..5).times do
-      faker_name = Faker::Quote.famous_last_words
+      faker_name = Faker::Lorem.unique.question(word_count: 5)
       inbox = Inbox.create(name: faker_name, 
                            user: user)
 
@@ -33,7 +33,7 @@ p "#{Message.count} messages present after delete_all"
         message_body = Faker::Lorem.paragraph
         Message.create(body: message_body, 
                        inbox: inbox,
-                       user: User.first) 
+                       user: User.all.sample) 
                        #user_id: rand(1..2),
       end
     end
