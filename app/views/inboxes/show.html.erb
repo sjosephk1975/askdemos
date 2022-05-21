@@ -1,8 +1,10 @@
 <%= render @inbox %>
 
 <h1>
-  Messages
+  Messages:
+  <span id="message_counter"
   <%= @inbox.messages_count %> 
+  </span>
 </h1>
 
 <div id="new_message">
