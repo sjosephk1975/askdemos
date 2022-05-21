@@ -4,19 +4,26 @@ class InboxesController < ApplicationController
 
   # GET /inboxes or /inboxes.json
   def index
+ #   set_meta_tags title: %w[Inboxes All]
+ #   set_meta_tags title: "Inboxes"
+     set_meta_tags title: controller_name.capitalize
     @inboxes = Inbox.all
   end
 
   # GET /inboxes/1 or /inboxes/1.json
-  def show; end
+  def show
+    set_meta_tags title: @inbox.name
+  end
 
   # GET /inboxes/new
   def new
+    set_meta_tags title: "#{action_name.capitalize} #{controller_name.capitalize.singularize}"
     @inbox = Inbox.new
   end
 
   # GET /inboxes/1/edit
-  def edit; 
+  def edit
+    set_meta_tags title: "#{action_name.capitalize} #{controller_name.capitalize.singularize}"
   end
 
   # POST /inboxes or /inboxes.json
