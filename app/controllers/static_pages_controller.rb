@@ -11,6 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def terms
-    set_meta_tags title: action_name.capitalize  
+    set_meta_tags title: action_name.capitalize
   end
 end

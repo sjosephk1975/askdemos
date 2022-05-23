@@ -4,9 +4,9 @@ class InboxesController < ApplicationController
 
   # GET /inboxes or /inboxes.json
   def index
- #   set_meta_tags title: %w[Inboxes All]
- #   set_meta_tags title: "Inboxes"
-     set_meta_tags title: controller_name.capitalize
+    #   set_meta_tags title: %w[Inboxes All]
+    #   set_meta_tags title: "Inboxes"
+    set_meta_tags title: controller_name.capitalize
     @inboxes = Inbox.all
   end
 
