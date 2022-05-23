@@ -4,11 +4,12 @@ module Inboxes
 
   def upvote
     @message = @inbox.messages.find(params[:id])    
-    flash[:notice] = 'voted!'
+    flash[:notice] = 'Voted!'
     @message.upvote! current_user
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
+          turbo_stream.update('flash', partial: "shared/flash"),
           turbo_stream.replace(@message, 
                               partial: 'inboxes/messages/message',
                               locals: { message: @message })
@@ -23,7 +24,9 @@ module Inboxes
       respond_to do |format|
         if @message.save
           format.turbo_stream do
+            flash.now[:notice] = "Message #{@message.id} created!"
             render turbo_stream: [
+             turbo_stream.update('flash', partial: "shared/flash"),
              turbo_stream.update('new_message', 
                                         partial: 'inboxes/messages/form', 
                                         locals: { message: Message.new }),
@@ -36,7 +39,9 @@ module Inboxes
           format.html { redirect_to @inbox, notice: 'Message was successfully created.' }
         else
           format.turbo_stream do
+             flash.now[:alert] = "Something went wrong ..."          
              render turbo_stream: [
+               turbo_stream.update('flash', partial: "shared/flash"),
                turbo_stream.update('new_message', 
                                         partial: 'inboxes/messages/form', 
                                         locals: { message: @message })
@@ -51,6 +56,7 @@ module Inboxes
       @message = @inbox.messages.find(params[:id])
       @message.destroy
       respond_to do |format|
+        flash.now[:notice] = "Message #{@message.id} destroyed!"   
         format.turbo_stream
         format.html { redirect_to @inbox, notice: 'Message was successfully destroyed.' }
       end
