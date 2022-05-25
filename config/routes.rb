@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,
+              controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   resources :inboxes do
     resources :messages, only: %i[create destroy], module: :inboxes do
       member do
