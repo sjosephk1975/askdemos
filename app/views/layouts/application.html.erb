@@ -10,7 +10,9 @@
     <%= display_meta_tags site: Rails.application.class.module_parent.name,
                         description: 'Sahasra Fitness',
                         keywords: 'Sahasra, Fitness, Weight Loss', reverse: true %>
-
+    <% if Rails.env.production? %>
+    <script defer data-domain="askdemos-sjk.herokuapp.com" src="https://plausible.io/js/plausible.js"></script>
+    <% end %>
   </head>
 
   <body>
