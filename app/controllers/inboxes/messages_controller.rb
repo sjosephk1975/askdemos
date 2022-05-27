@@ -1,9 +1,9 @@
 module Inboxes
   class MessagesController < ApplicationController
     before_action :set_inbox
+    before_action :set_message, only: %i[change_status upvote]
 
     def change_status
-      @message = @inbox.messages.find(params[:id])
       @message.update(status: params[:status])
       flash.now[:notice] = "Status for message #{@message.id}: updated to #{@message.status}"
       respond_to do |format|
@@ -20,7 +20,6 @@ module Inboxes
     end
 
     def upvote
-      @message = @inbox.messages.find(params[:id])
       flash.now[:notice] = 'Voted!'
       @message.upvote! current_user
       respond_to do |format|
@@ -71,7 +70,6 @@ module Inboxes
     end
 
     def destroy
-      @message = @inbox.messages.find(params[:id])
       @message.destroy
       respond_to do |format|
         flash.now[:notice] = "Message #{@message.id} destroyed!"
@@ -88,6 +86,10 @@ module Inboxes
 
     def message_params
       params.require(:message).permit(:body).merge(user: current_user)
+    end
+
+    def set_message
+      @message = @inbox.messages.find(params[:id])
     end
   end
 end
