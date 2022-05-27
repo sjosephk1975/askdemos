@@ -12,17 +12,17 @@ class Message < ApplicationRecord
   acts_as_votable
 
   enum status: {
-    incoming: "incoming",
-    draft: "draft",
-    reviewed: "reviewed",
-    published: "published",
-    spam: "spam"
+    incoming: 'incoming',
+    draft: 'draft',
+    reviewed: 'reviewed',
+    published: 'published',
+    spam: 'spam'
   }
 
-  #incoming
-  #draft
-  #reviewed
-  #published
+  # incoming
+  # draft
+  # reviewed
+  # published
 
   def upvote!(user)
     if user.voted_up_on? self, vote_scope: 'like'
