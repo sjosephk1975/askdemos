@@ -2,10 +2,10 @@ module MessagesHelper
     def status_color(status)
         case status
             when "incoming"
-            "blue"
-            when "todo"
+            "grey"
+            when "draft"
             "orange"
-            when "done"
+            when "reviewed"
             "green"
             when "spam"
             "red"

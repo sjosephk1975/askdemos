@@ -1,4 +1,6 @@
-<div id="<%= dom_id message %>" class="scaffold_record">
+<div id="<%= dom_id message %>" 
+  class="scaffold_record"
+    style="background-color: <%= status_color(message.status) %>;">
   <%= simple_format(message.body) %>
 
   <b>
