@@ -4,6 +4,17 @@ Rails.application.configure do
   config.hosts = nil
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.delivery_method = :smtp
+
+  #config.action_mailer.smtp_settings = {
+  #  address:              Rails.application.credentials.dig(:aws, :ses, :address),
+  #  port:                 587,
+  #  user_name:            Rails.application.credentials.dig(:aws, :ses, :id),
+  #  password:             Rails.application.credentials.dig(:aws, :ses, :secret),
+  #  authentication:       :plain,
+  #  enable_starttls_auto: true }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
